@@ -1,0 +1,109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #F2F2F2;
+}
+.header{
+    display: flex;
+    align-items: center;
+    justify-content:space-between
+}
+
+.cadastrar_inicio{
+    font-family: "Jomhuria", serif;
+    font-size: 50px;
+    color: #fff;
+    text-transform:capitalize;
+
+}
+
+.botao_cadastro{
+    background-color: #35533D;
+    height: 70px;
+    width: 178px;
+    margin-right: 90px;
+    border-radius: 5px;
+    border: none;
+}
+
+.nome_site{
+    font-family: "Jomhuria", serif;
+    margin: 80px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 70px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+.campos_tabela{
+    display: flex;
+    height: 99px;
+    width: 94%;
+    background-color: #47654F;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    border-radius: 5px 0px 0px;
+   
+}
+
+.id_medico{
+    font-family: "Jomhuria", serif;
+    font-size: 70px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.foto{
+    font-family: "Jomhuria", serif;
+    font-size: 70px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.nome{
+    font-family: "Jomhuria", serif;
+    font-size: 70px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.telefone{
+    font-family: "Jomhuria", serif;
+    font-size: 70px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.especialidade{
+    font-family: "Jomhuria", serif;
+    font-size: 70px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.crm{
+    font-family: "Jomhuria", serif;
+    font-size: 70px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-right: 150px;
+}
+
+.infosmedico{
+    display: flex;
+    height: 99px;
+    width: 94%;
+    background-color: #769C80;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+   
+}
