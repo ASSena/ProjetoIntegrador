@@ -33,7 +33,32 @@
 
 
     </main>
-
-    <script src="src/js/requisicao.js"></script>
+    <div id="pop-up" class="pop-up">
+        <div class="pop-up-content">
+            <div class="imagem-container">
+                <img src="src/icons/Frame 9.svg" alt="imagem do médico" class="imagemMedicoCadastro">
+            </div>
+            <div class="form-container">
+                <span id="botao_fechar" class="botao_fechar">X</span>
+                <h2>Cadastro Médico</h2>
+                <form id="cadastroForm">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" placeholder="Digite o nome" required>
+                    
+                    <label for="telefone">Telefone:</label>
+                    <input type="text" id="telefone" placeholder="Digite o telefone" required>
+                    
+                    <label for="especialidade">Especialidade:</label>
+                    <input type="text" id="especialidade" placeholder="Digite a especialidade" required>
+                    
+                    <label for="crm">CRM:</label>
+                    <input type="text" id="crm" placeholder="Digite o CRM" required>
+                    
+                    <button type="submit" id="cadastrar">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>

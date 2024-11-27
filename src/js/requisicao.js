@@ -59,5 +59,45 @@ function exibirMedicos(medicos) {
     }
 }
 
-// Chama a função para buscar e exibir os médicos ao carregar a página
-buscarMedicos();
+// Elementos do pop-up
+const popup = document.getElementById("pop-up");
+const openPopup = document.querySelector(".botao_cadastro");
+const closePopup = document.getElementById("closePopup");
+const form = document.getElementById("cadastroForm");
+
+// Abrir o pop-up ao clicar no botão "Cadastrar"
+openPopup.addEventListener("click", () => {
+    popup.style.display = "flex"; // Exibe o pop-up
+});
+
+// Fechar o pop-up ao clicar no botão de fechar
+closePopup.addEventListener("click", () => {
+    popup.style.display = "none"; // Esconde o pop-up
+});
+
+// Fechar o pop-up ao clicar fora do conteúdo
+popup.addEventListener("click", (event) => {
+    if (event.target === popup) {
+        popup.style.display = "none";
+    }
+});
+
+// Processar o formulário de cadastro
+form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Evita o recarregamento da página
+    
+    // Coletar os dados do formulário
+    const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
+    const especialidade = document.getElementById("especialidade").value;
+    const crm = document.getElementById("crm").value;
+
+    // Exemplo: Exibir os dados no console (pode substituir por uma requisição a um servidor)
+    console.log({ nome, telefone, especialidade, crm });
+
+    // Fechar o pop-up após o envio
+    popup.style.display = "none";
+
+    // Limpar os campos do formulário
+    form.reset();
+});
