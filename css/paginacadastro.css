@@ -15,11 +15,11 @@
 .pop-up-content {
     background: white;
     display: flex;
-    padding: 20px;
+    padding: 0px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: left;
-    width: 600px; 
+    width: 800px; 
     position: relative;
 }
 
@@ -28,13 +28,18 @@
 }
 
 .imagemMedicoCadastro {
-    width: 300px; 
+    width: 400px; 
     height: auto;
+    display: flex;
 }
 
 .form-container {
     flex: 1;
+    padding: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
 }
+
 
 .botao_fechar {
     position: absolute;
@@ -60,7 +65,7 @@ form input {
 }
 
 form button {
-    background-color: #769C80;
+    background-color: #47654F;
     color: white;
     padding: 10px;
     border: none;
@@ -72,4 +77,6 @@ form button {
 
 form button:hover {
     background-color: #6f8a6d;
+    font-weight: bold;
 }
+

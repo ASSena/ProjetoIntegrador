@@ -59,45 +59,45 @@ function exibirMedicos(medicos) {
     }
 }
 
-// Elementos do pop-up
-const popup = document.getElementById("pop-up");
-const openPopup = document.querySelector(".botao_cadastro");
-const closePopup = document.getElementById("closePopup");
-const form = document.getElementById("cadastroForm");
+ // Elementos do pop-up
+ const popup = document.getElementById("pop-up");
+ const openPopup = document.querySelector(".botao_cadastro");
+ const closePopup = document.getElementById("botao_fechar"); // Agora o botão de fechar está com o id correto
+ const form = document.getElementById("cadastroForm");
 
-// Abrir o pop-up ao clicar no botão "Cadastrar"
-openPopup.addEventListener("click", () => {
-    popup.style.display = "flex"; // Exibe o pop-up
-});
+ // Abrir o pop-up ao clicar no botão "Cadastrar"
+ openPopup.addEventListener("click", () => {
+     popup.style.display = "flex"; // Exibe o pop-up
+ });
 
-// Fechar o pop-up ao clicar no botão de fechar
-closePopup.addEventListener("click", () => {
-    popup.style.display = "none"; // Esconde o pop-up
-});
+ // Fechar o pop-up ao clicar no botão de fechar
+ closePopup.addEventListener("click", () => {
+     popup.style.display = "none"; // Esconde o pop-up
+ });
 
-// Fechar o pop-up ao clicar fora do conteúdo
-popup.addEventListener("click", (event) => {
-    if (event.target === popup) {
-        popup.style.display = "none";
-    }
-});
+ // Fechar o pop-up ao clicar fora do conteúdo
+ popup.addEventListener("click", (event) => {
+     if (event.target === popup) {
+         popup.style.display = "none"; // Fechar o pop-up ao clicar fora do conteúdo
+     }
+ });
 
-// Processar o formulário de cadastro
-form.addEventListener("submit", (event) => {
-    event.preventDefault(); // Evita o recarregamento da página
-    
-    // Coletar os dados do formulário
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
-    const especialidade = document.getElementById("especialidade").value;
-    const crm = document.getElementById("crm").value;
+ // Processar o formulário de cadastro
+ form.addEventListener("submit", (event) => {
+     event.preventDefault(); // Evita o recarregamento da página
+     
+     // Coletar os dados do formulário
+     const nome = document.getElementById("nome").value;
+     const telefone = document.getElementById("telefone").value;
+     const especialidade = document.getElementById("especialidade").value;
+     const crm = document.getElementById("crm").value;
 
-    // Exemplo: Exibir os dados no console (pode substituir por uma requisição a um servidor)
-    console.log({ nome, telefone, especialidade, crm });
+     // Exemplo: Exibir os dados no console (pode substituir por uma requisição a um servidor)
+     console.log({ nome, telefone, especialidade, crm });
 
-    // Fechar o pop-up após o envio
-    popup.style.display = "none";
+     // Fechar o pop-up após o envio
+     popup.style.display = "none";
 
-    // Limpar os campos do formulário
-    form.reset();
-});
+     // Limpar os campos do formulário
+     form.reset();
+ });
