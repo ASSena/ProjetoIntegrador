@@ -106,14 +106,6 @@ body{
     align-items: center;
 }
 
-/* .medico{
-    display: flex;
-    height: 99px;
-    width: 94%;
-    justify-content:space-around;
-    align-items: center;
-    margin: 0 auto;
-}  */
 
 .id{
     font-family: "Jomhuria", serif;
@@ -161,9 +153,8 @@ body{
 }
 
 .foto_medico{
-    font-size: 60px;
-    color: #fff;
-    margin-left: 100px;
+   display: block;
+   width: 100%;
 }
 
 

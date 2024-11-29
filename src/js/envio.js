@@ -65,7 +65,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async (event)
         telefone,
         especialidade,
         crm,
-        url: uploadedImageUrl, // Adiciona a URL da imagem ao objeto
+        url_foto: uploadedImageUrl, // Adiciona a URL da imagem ao objeto
     };
     try {
         const response = await fetch("http://localhost:8080/cadastrarmedicos", {
