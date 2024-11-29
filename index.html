@@ -55,15 +55,49 @@
                     <label for="crm">CRM:</label>
                     <input type="text" id="crm" placeholder="Digite o CRM" required>
 
-                    <label for="crm">Foto:</label>
-                    <input type="text" id="crm" placeholder="Digite o link" required>
-                    
-                    <button type="submit" id="cadastrar">Cadastrar</button>
+                    <label for="foto">Foto:</label>
+                    <div class="container">
+                        <div class="container">
+                            <div id="drop-area" class="drop-area">
+                                <p>Arraste e solte a foto aqui</p>
+                                <input type="file" id="fileElem" accept="image/*" style="display:none;">
+                            </div>
+                    </div>
+
+                    <button type="submit" id="botao-popup">Cadastrar</button>
                 </form>
             </div>
         </div>
     </div>
 
     
+    <style>
+        #pop-up{
+            display: none;
+        }
+    </style>
+    <script>
+      
+        const botao_cadasto = document.getElementsByClassName("botao_cadastro")[0]; 
+        const formulario = document.getElementById("pop-up");
+        const botao_fechar_popup = document.getElementsByClassName("botao_fechar")[0]
+       
+        botao_cadasto.addEventListener('click', function(){
+            if(formulario.style.display === 'none' || formulario.style.display === '') {
+                formulario.style.display = 'flex'; 
+            } else {
+                formulario.style.display = 'none'; 
+            }
+        });
+        botao_fechar_popup.addEventListener('click', function(){
+            if(formulario.style.display === 'none' || formulario.style.display === '') {
+                formulario.style.display = 'flex'; 
+            } else {
+                formulario.style.display = 'none'; 
+            }
+        });
+    </script>
+    <script src="src/js/requisicao.js"></script>
+    <script src="src/js/envio.js"></script>
 </body>
 </html>

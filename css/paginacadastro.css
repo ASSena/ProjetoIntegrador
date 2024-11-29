@@ -1,5 +1,5 @@
 .pop-up {
-    display: none;
+
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +19,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: left;
-    width: 800px; 
+    width: 900px; 
     position: relative;
 }
 
@@ -78,5 +78,26 @@ form button {
 form button:hover {
     background-color: #6f8a6d;
     font-weight: bold;
+}
+
+
+#botao-popup{
+    margin-top: 10px;
+    
+}
+
+.container {
+    text-align: center;
+}
+.drop-area {
+    border: 2px dashed #47654F;
+    padding: 10px;
+    width: 400px;
+    cursor: pointer;
+}
+.drop-area p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
 }
 
