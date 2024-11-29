@@ -1,5 +1,4 @@
 .pop-up {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +18,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     text-align: left;
-    width: 800px; 
+    width: 900px; 
     position: relative;
 }
 
@@ -28,8 +27,8 @@
 }
 
 .imagemMedicoCadastro {
-    width: 400px; 
-    height: auto;
+    width: 407px; 
+    height: 100%;
     display: flex;
 }
 
@@ -80,3 +79,40 @@ form button:hover {
     font-weight: bold;
 }
 
+#canvafoto{
+    border: 5px dashed gray;
+    height: 50px;
+    padding-top: 4%;
+    padding-left: 15%;
+}
+
+#botao-popup{
+    margin-top: 10px;
+    
+}
+
+
+
+
+
+
+
+
+
+.container {
+    text-align: center;
+}
+
+.drop-area {
+    border: 2px dashed #47654F;
+    padding: 10px;
+    width: 400px;
+
+    cursor: pointer;
+}
+
+.drop-area p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
+}

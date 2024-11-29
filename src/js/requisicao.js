@@ -1,5 +1,6 @@
 async function buscarMedicos() {
     try {
+        console.log("está sendo chamado")
         const response = await fetch("http://localhost:8080/"); // Requisição para a API
         if (response.ok) {
             const medicos = await response.json(); // Converte a resposta em JSON
@@ -59,6 +60,8 @@ function exibirMedicos(medicos) {
     }
 }
 
+buscarMedicos();
+
  // Elementos do pop-up
  const popup = document.getElementById("pop-up");
  const openPopup = document.querySelector(".botao_cadastro");
@@ -82,22 +85,22 @@ function exibirMedicos(medicos) {
      }
  });
 
- // Processar o formulário de cadastro
- form.addEventListener("submit", (event) => {
-     event.preventDefault(); // Evita o recarregamento da página
+//  // Processar o formulário de cadastro
+//  form.addEventListener("submit", (event) => {
+//      event.preventDefault(); // Evita o recarregamento da página
      
-     // Coletar os dados do formulário
-     const nome = document.getElementById("nome").value;
-     const telefone = document.getElementById("telefone").value;
-     const especialidade = document.getElementById("especialidade").value;
-     const crm = document.getElementById("crm").value;
+//      // Coletar os dados do formulário
+//      const nome = document.getElementById("nome").value;
+//      const telefone = document.getElementById("telefone").value;
+//      const especialidade = document.getElementById("especialidade").value;
+//      const crm = document.getElementById("crm").value;
 
-     // Exemplo: Exibir os dados no console (pode substituir por uma requisição a um servidor)
-     console.log({ nome, telefone, especialidade, crm });
+//      // Exemplo: Exibir os dados no console (pode substituir por uma requisição a um servidor)
+//      console.log({ nome, telefone, especialidade, crm });
 
-     // Fechar o pop-up após o envio
-     popup.style.display = "none";
+//      // Fechar o pop-up após o envio
+//      popup.style.display = "none";
 
-     // Limpar os campos do formulário
-     form.reset();
- });
+//      // Limpar os campos do formulário
+//      form.reset();
+//  });
