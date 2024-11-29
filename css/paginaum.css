@@ -1,27 +1,28 @@
+/* Estilos gerais */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #F2F2F2;
 }
-.header{
+
+.header {
     display: flex;
     align-items: center;
-    justify-content:space-between
+    justify-content: space-between;
 }
 
-.cadastrar_inicio{
+.cadastrar_inicio {
     font-family: "Jomhuria", serif;
     font-size: 50px;
     color: #fff;
-    text-transform:capitalize;
-
+    text-transform: capitalize;
 }
 
-.botao_cadastro{
+.botao_cadastro {
     background-color: #35533D;
     height: 70px;
     width: 178px;
@@ -30,135 +31,72 @@ body{
     border: none;
 }
 
-.nome_site{
+.nome_site {
     font-family: "Jomhuria", serif;
     margin: 80px;
-    font-size:150px;
+    font-size: 150px;
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 5px;
 }
 
-
-.campos_tabela{
+.campos_tabela {
     display: flex;
     height: 99px;
     width: 94%;
     background-color: #47654F;
-    justify-content:space-around;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     margin: 0 auto;
-    border-radius: 5px 5px 0px 0px;
-   
+    border-radius: 5px 5px 0 0;
 }
 
-.id_medico{
+/* Ajuste da tabela e fontes */
+.id_medico, .foto, .nome, .telefone, .especialidade {
     font-family: "Jomhuria", serif;
-    font-size: 70px;
+    font-size: 60px;
     color: #fff;
     text-transform: uppercase;
 }
 
-.foto{
+.crm {
     font-family: "Jomhuria", serif;
-    font-size: 70px;
+    font-size: 50px;
     color: #fff;
     text-transform: uppercase;
+    margin-right: 200px;
 }
 
-.nome{
-    font-family: "Jomhuria", serif;
-    font-size: 70px;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.telefone{
-    font-family: "Jomhuria", serif;
-    font-size: 70px;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.especialidade{
-    font-family: "Jomhuria", serif;
-    font-size: 70px;
-    color: #fff;
-    text-transform: uppercase;
-}
-
-.crm{
-    font-family: "Jomhuria", serif;
-    font-size: 70px;
-    color: #fff;
-    text-transform: uppercase;
-    margin-right: 250px;
-}
-
-
-.medico{
-    display: grid;
-    grid-template-columns: 1fr 1fr 2fr 2fr 2fr 1fr 2fr;
+.medico {
+    display: flex;
+    justify-content: space-around;
     height: 99px;
     width: 94%;
     margin: 0 auto;
     align-items: center;
 }
 
-
-.id{
-    font-family: "Jomhuria", serif;
-    font-size: 60px;
-    color: #fff;
-    text-transform: uppercase;
-    margin-left: 70px;
-   
-}
-
-.nome_medico{
+.id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
     font-family: "Jomhuria", serif;
     font-size: 60px;
     color: #fff;
     text-transform: capitalize;
+}
+
+.foto_medico {
+    display: flex;
+    width: 100%;
+}
+.nome_medico{
     width: 150px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-left: 150px;
-   
 }
 
-.crm_medico{
-    font-family: "Jomhuria", serif;
-    font-size: 60px;
-    color: #fff;
-    margin-left: 120px;
-   
-}
-
-.telefone_medico{
-    font-family: "Jomhuria", serif;
-    font-size: 60px;
-    color: #fff;
-    margin-left: 60px;
-}
-
-.especialidade_medico{
-    font-family: "Jomhuria", serif;
-    font-size: 60px;
-    color: #fff;
-    text-transform: capitalize;
-    margin-left: 80px;
-}
-
-.foto_medico{
-   display: block;
-   width: 100%;
-}
-
-
-.botao_lixo{
+/* Botões Lixo e Editar */
+.botao_lixo, .botao_editar {
     background-color: #35533D;
     height: 50px;
     width: 50px;
@@ -166,25 +104,156 @@ body{
     border: none;
 }
 
-.lixo{
+.lixo, .editar {
     width: 40px;
     height: 50px;
 }
 
-
-.botao_editar{
-    background-color: #35533D;
-    height: 50px;
-    width: 50px;
-    border-radius: 5px;
-    border: none;
-}
-
-.editar{
-    width: 50px;
-    height: 50px;
-}
-
-.exluir_editar{
+.exluir_editar {
     margin-left: 100px;
+}
+
+/* Responsividade para resoluções de 1440px */
+@media (max-width: 1440px) {
+    .nome_site {
+        font-size: 120px; /* Ajuste da fonte */
+        margin: 50px;
+    }
+
+    .campos_tabela {
+        height: 90px;
+    }
+
+    .medico {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
+        font-size: 50px;
+    }
+
+    .botao_cadastro {
+        width: 160px;
+        height: 60px;
+    }
+
+    .foto_medico {
+        max-width: 100px;
+    }
+
+    .exluir_editar {
+        margin-left: 60px; /* Ajuste de margem */
+        font-size: 45px; /* Reduzir o tamanho da fonte */
+    }
+}
+
+/* Responsividade para resoluções de 1280px */
+@media (max-width: 1280px) {
+    .nome_site {
+        font-size: 100px;
+        margin: 40px;
+    }
+
+    .campos_tabela {
+        height: 70px;
+    }
+
+    .medico {
+        height: 70px;
+    }
+
+    .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
+        font-size: 35px;
+    }
+
+    .botao_cadastro {
+        width: 150px;
+        height: 55px;
+    }
+
+    .foto_medico {
+        max-width: 65px;
+        border-radius: 50px;
+    }
+
+    .exluir_editar {
+        margin-top: 10px;
+        
+    }
+
+    
+    
+
+
+}
+
+/* Responsividade para resoluções de 1024px */
+@media (max-width: 1024px) {
+    .nome_site {
+        font-size: 80px;
+        margin: 30px;
+    }
+
+    .campos_tabela {
+        height: 70px;
+        width: 90%;
+    }
+
+    .medico {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
+        font-size: 45px;
+    }
+
+    .botao_cadastro {
+        width: 140px;
+        height: 50px;
+    }
+
+    .foto_medico {
+        max-width: 80px;
+    }
+
+    .exluir_editar {
+        margin-left: 40px; /* Ajuste de margem */
+        font-size: 35px; /* Reduzir o tamanho da fonte */
+    }
+}
+
+/* Responsividade para resoluções de 800px */
+@media (max-width: 800px) {
+    .nome_site {
+        font-size: 60px;
+        margin: 20px;
+    }
+
+    .campos_tabela {
+        flex-direction: column;
+        height: auto;
+        width: 80%;
+    }
+
+    .medico {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
+        font-size: 40px;
+    }
+
+    .botao_cadastro {
+        width: 120px;
+        height: 45px;
+    }
+
+    .foto_medico {
+        max-width: 70px;
+    }
+
+    .exluir_editar {
+        margin-left: 30px; /* Ajuste de margem */
+        font-size: 30px; /* Reduzir ainda mais o tamanho da fonte */
+    }
 }

@@ -1,3 +1,4 @@
+// Função para buscar médicos da API
 async function buscarMedicos() {
     try {
         const response = await fetch("http://localhost:8080/"); // Requisição para a API
@@ -48,7 +49,7 @@ function exibirMedicos(medicos) {
                 <p class="especialidade_medico">${medico.especialidade}</p>
                 <p class="crm_medico">${medico.crm}</p>  
                 <div class="exluir_editar">
-                    <button class="botao_lixo"><img class="lixo" src="src/icons/Delete.svg"></button>
+                    <button class="botao_lixo" data-id="${medico.id}"><img class="lixo" src="src/icons/Delete.svg"></button>
                     <button class="botao_editar"><img class="editar" src="src/icons/Pencil.svg"></button>
                 </div>
             `;
@@ -56,7 +57,34 @@ function exibirMedicos(medicos) {
             // Adiciona a div criada ao container
             container.appendChild(medicoDiv);
         });
+
+        // Adiciona event listeners nos botões de excluir
+        const botoesExcluir = document.querySelectorAll(".botao_lixo");
+        botoesExcluir.forEach(botao => {
+            botao.addEventListener("click", async (e) => {
+                const medicoId = e.target.closest("button").getAttribute("data-id"); // Pega o id do médico
+                await excluirMedico(medicoId); // Chama a função para excluir o médico
+            });
+        });
     }
 }
 
-buscarMedicos()
+// Função para excluir um médico da API
+async function excluirMedico(id) {
+    try {
+        const response = await fetch(`http://localhost:8080/${id}`, {
+            method: "DELETE",
+        });
+        if (response.ok) {
+            alert("Médico excluído com sucesso!");
+            buscarMedicos();  // Atualiza a lista de médicos após a exclusão
+        } else {
+            console.error("Erro ao excluir médico:", response.status);
+        }
+    } catch (error) {
+        console.error("Erro de conexão ao excluir médico:", error);
+    }
+}
+
+// Chama a função para buscar os médicos
+buscarMedicos();
