@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/paginaum.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
@@ -27,10 +26,14 @@
             <p class="crm">crm</p>
         </div>
 
-        <div id="infosmedico"></div>
+
+        <div id="infosmedico">
+
+
+        </div>
+
 
     </main>
-
     <div id="pop-up" class="pop-up">
         <div class="pop-up-content">
             <div class="imagem-container">
@@ -39,7 +42,6 @@
             <div class="form-container">
                 <span id="botao_fechar" class="botao_fechar">x</span>
                 <h2>Cadastro Médico</h2>
-                
                 <form id="cadastroForm">
                     <label for="nome">Nome:</label>
                     <input type="text" id="nome" placeholder="Digite o nome" required>
@@ -53,51 +55,15 @@
                     <label for="crm">CRM:</label>
                     <input type="text" id="crm" placeholder="Digite o CRM" required>
 
-                    <label for="foto">Foto:</label>
-                    <div class="container">
-                        <div class="container">
-                            <div id="drop-area" class="drop-area">
-                                <p>Arraste e solte a foto aqui</p>
-                                <input type="file" id="fileElem" accept="image/*" style="display:none;">
-                            </div>
-                    </div>
+                    <label for="crm">Foto:</label>
+                    <input type="text" id="crm" placeholder="Digite o link" required>
                     
-                    <button type="submit" id="botao-popup">Cadastrar</button>
+                    <button type="submit" id="cadastrar">Cadastrar</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <style>
-        #pop-up{
-            display: none;
-        }
-    </style>
-
-    <script>
-      
-        const botao_cadasto = document.getElementsByClassName("botao_cadastro")[0]; 
-        const formulario = document.getElementById("pop-up");
-        const botao_fechar_popup = document.getElementsByClassName("botao_fechar")[0]
-       
-        botao_cadasto.addEventListener('click', function(){
-            if(formulario.style.display === 'none' || formulario.style.display === '') {
-                formulario.style.display = 'flex'; 
-            } else {
-                formulario.style.display = 'none'; 
-            }
-        });
-
-        botao_fechar_popup.addEventListener('click', function(){
-            if(formulario.style.display === 'none' || formulario.style.display === '') {
-                formulario.style.display = 'flex'; 
-            } else {
-                formulario.style.display = 'none'; 
-            }
-        });
-
-    </script>
-    <script src="src/js/requisicao.js"></script>
-    <script src="src/js/envio.js"></script>
+    
 </body>
 </html>
