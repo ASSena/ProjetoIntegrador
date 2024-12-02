@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +9,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
 </head>
+
 <body>
-    <header class="header"> 
+    <header class="header">
         <p class="nome_site">manager doctor</p>
-        <button class="botao_cadastro" type="button"><p class="cadastrar_inicio">cadastrar</p></button>
+        <button class="botao_cadastro" type="button">
+            <p class="cadastrar_inicio">cadastrar</p>
+        </button>
     </header>
-   
+
     <main>
-        <div class="campos_tabela">
-            <p class="id_medico">id</p>
-            <p class="foto">foto</p>
-            <p class="nome">nome</p>
-            <p class="telefone">telefone</p>
-            <p class="especialidade">especialidade</p>
-            <p class="crm">crm</p>
-        </div>
+
 
 
         <div id="infosmedico">
+            <table id="tabela-medicos" class="campos_tabela">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Foto</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Especialidade</th>
+                        <th>CRM</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
 
+                </tbody>
+            </table>
 
         </div>
 
@@ -40,19 +53,19 @@
             <div class="imagem-container">
                 <img src="src/icons/image 1.png" alt="imagem medico" class="imagemMedicoCadastro">
             </div>
-            <div class="form-container">                            
+            <div class="form-container">
                 <span id="botao_fechar" class="botao_fechar">x</span>
                 <h2 class="cadastro-medico">Cadastro Médico</h2>
                 <form id="cadastroForm">
                     <label for="nome" class="nome_form">Nome:</label>
                     <input type="text" id="nome" placeholder="Digite o nome" required>
-                    
+
                     <label for="telefone" class="telefone_form">Telefone:</label>
                     <input type="text" id="telefone" placeholder="Digite o telefone" required>
-                    
+
                     <label for="especialidade" class="especialidade_form">Especialidade:</label>
                     <input type="text" id="especialidade" placeholder="Digite a especialidade" required>
-                    
+
                     <label for="crm" class="crm_form">CRM:</label>
                     <input type="text" id="crm" placeholder="Digite o CRM" required>
 
@@ -63,42 +76,86 @@
                                 <p>Arraste e solte a foto aqui</p>
                                 <input type="file" id="fileElem" accept="image/*" style="display:none;">
                             </div>
+                        </div>
+
+                        <button type="submit" id="botao-popup">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div id="formulario-edicao" class="pop-up" style="display:none;">
+        <div class="popup-edicao">
+            <div class="imagem-formulario-edicao">
+                <img src="src/icons/image.png" alt="Imagem do Médico" class="imagemMedicoFormularioEdicao">
+            </div>
+            <div class="formulario-conteudo-edicao">
+                <span id="fechar-formulario-edicao" class="fechar-formulario-edicao">x</span>
+                <h2 class="titulo-edicao">Editar Médico</h2>
+                <form id="form-editar-medico">
+                    <label for="nome-edicao" class="label-nome-edicao">Nome:</label>
+                    <input type="text" id="input-nome-edicao" placeholder="Digite o nome">
+
+                    <label for="telefone-edicao" class="label-telefone-edicao">Telefone:</label>
+                    <input type="text" id="input-telefone-edicao" placeholder="Digite o telefone">
+
+                    <label for="especialidade-edicao" class="label-especialidade-edicao">Especialidade:</label>
+                    <input type="text" id="input-especialidade-edicao" placeholder="Digite a especialidade">
+
+                    <label for="crm-edicao" class="label-crm-edicao">CRM:</label>
+                    <input type="text" id="input-crm-edicao" placeholder="Digite o CRM">
+
+                    <label for="foto-edicao" class="label-foto-edicao">Foto:</label>
+                    <div class="container-foto-edicao">
+                        <div id="area-arquivo-edicao" class="area-arquivo-edicao">
+                            <p>Arraste e solte a foto aqui</p>
+                            <input type="file" id="input-arquivo-edicao" accept="image/*" style="display:none;">
+                        </div>
                     </div>
 
-                    <button type="submit" id="botao-popup">Cadastrar</button>
+                    <button type="submit" id="botao-editar-medico">Salvar Alterações</button>
                 </form>
             </div>
         </div>
     </div>
 
-    
+
+
     <style>
-        #pop-up{
+        #pop-up {
             display: none;
         }
     </style>
+
+
+
+
     <script>
-      
-        const botao_cadasto = document.getElementsByClassName("botao_cadastro")[0]; 
+
+
+        const botao_cadasto = document.getElementsByClassName("botao_cadastro")[0];
         const formulario = document.getElementById("pop-up");
         const botao_fechar_popup = document.getElementsByClassName("botao_fechar")[0]
-       
-        botao_cadasto.addEventListener('click', function(){
-            if(formulario.style.display === 'none' || formulario.style.display === '') {
-                formulario.style.display = 'flex'; 
+
+        botao_cadasto.addEventListener('click', function () {
+            if (formulario.style.display === 'none' || formulario.style.display === '') {
+                formulario.style.display = 'flex';
             } else {
-                formulario.style.display = 'none'; 
+                formulario.style.display = 'none';
             }
         });
-        botao_fechar_popup.addEventListener('click', function(){
-            if(formulario.style.display === 'none' || formulario.style.display === '') {
-                formulario.style.display = 'flex'; 
-            } else {
-                formulario.style.display = 'none'; 
-            }
+        botao_fechar_popup.addEventListener('click', function () {
+           formulario.style.display = 'none';
         });
+
     </script>
+
     <script src="src/js/requisicao.js"></script>
+    <script src="src/js/editar.js"></script>
     <script src="src/js/envio.js"></script>
 </body>
+
 </html>

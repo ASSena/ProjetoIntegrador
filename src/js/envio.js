@@ -56,11 +56,6 @@ async function uploadToCloudinary(file) {
 document.getElementById('cadastroForm').addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    // Verifique se a imagem foi carregada antes de continuar
-    if (!uploadedImageUrl) {
-        alert("Por favor, envie uma imagem antes de cadastrar.");
-        return;
-    }
 
     // Coleta os dados do formulário
     const nome = document.getElementById('nome').value;
