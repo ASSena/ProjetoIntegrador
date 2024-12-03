@@ -1,7 +1,7 @@
 // Função para buscar médicos da API
 async function buscarMedicos() {
     try {
-        const response = await fetch("https://projeto-integrador-psi.vercel.app/"); // Requisição para a API
+        const response = await fetch("https://managerdoctor-bne9e9awe2h3gzgy.brazilsouth-01.azurewebsites.net/"); // Requisição para a API
         if (response.ok) {
             const medicos = await response.json(); // Converte a resposta em JSON
             exibirMedicos(medicos); // Passa os dados para a função de exibição
@@ -84,7 +84,7 @@ function exibirMedicos(medicos) {
 // Função para excluir um médico da API
 async function excluirMedico(id) {
     try {
-        const response = await fetch(`https://projeto-integrador-psi.vercel.app/${id}`, {
+        const response = await fetch(`https://managerdoctor-bne9e9awe2h3gzgy.brazilsouth-01.azurewebsites.net/${id}`, {
             method: "DELETE",
         });
         if (response.ok) {
