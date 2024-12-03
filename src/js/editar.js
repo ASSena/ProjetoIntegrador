@@ -3,7 +3,7 @@ let upImgEdicao = "";
 
 async function buscarmedicoId(id) {
     try {
-        const response = await fetch(`http://localhost:8080/${id}`); // Requisição para a API
+        const response = await fetch(`https://projeto-integrador-psi.vercel.app/${id}`); // Requisição para a API
         if (response.ok) {
             const medico = await response.json(); // Converte a resposta em JSON
             return medico;
@@ -100,7 +100,7 @@ async function enviarDadosEditar(id) {
 
         // Envia os dados para o servidor
         try {
-            const response = await fetch(`http://localhost:8080/editarmedico/${id}`, {
+            const response = await fetch(`https://projeto-integrador-psi.vercel.app/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

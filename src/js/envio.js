@@ -75,7 +75,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async (event)
 
     // Envia os dados para o servidor
     try {
-        const response = await fetch("http://localhost:8080/cadastrarmedicos", {
+        const response = await fetch("https://projeto-integrador-psi.vercel.app/cadastrarmedicos", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
