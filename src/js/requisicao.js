@@ -5,6 +5,7 @@ async function buscarMedicos() {
         if (response.ok) {
             const medicos = await response.json(); // Converte a resposta em JSON
             exibirMedicos(medicos); // Passa os dados para a função de exibição
+            
         } else {
             console.error("Erro na requisição:", response.status);
         }
@@ -51,7 +52,7 @@ function exibirMedicos(medicos) {
         `;
         }else{
             novaLinha.innerHTML = `
-            <th scope="row"><p class="id">${medico.id}</p></th>
+            <th scope="row"><p class="id" id="id_do_medico">${medico.id}</p></th>
             <td><img class="usersemfoto" src="src/icons/usersemimg.webp" alt="Foto do médico"></td>
             <td><p class="nome_medico">${medico.nome}</p></td>
             <td><p class="telefone_medico">${medico.telefone}</p></td>
@@ -77,14 +78,7 @@ function exibirMedicos(medicos) {
         tabela.querySelector("tbody").appendChild(novaLinha);
     });
 
-    // Adiciona event listeners nos botões de excluir
-    const botoesExcluir = document.querySelectorAll(".botao_lixo");
-    botoesExcluir.forEach(botao => {
-        botao.addEventListener("click", async (e) => {
-            const medicoId = e.target.closest("button").getAttribute("data-id"); // Pega o id do médico
-            await excluirMedico(medicoId); // Chama a função para excluir o médico
-        });
-    });
+  
 }
 
 // Função para excluir um médico da API
@@ -94,8 +88,7 @@ async function excluirMedico(id) {
             method: "DELETE",
         });
         if (response.ok) {
-            alert("Médico excluído com sucesso!");
-            buscarMedicos(); // Atualiza a lista de médicos após a exclusão
+            buscarMedicos(); 
         } else {
             console.error("Erro ao excluir médico:", response.status);
         }
@@ -104,30 +97,12 @@ async function excluirMedico(id) {
     }
 }
 
-// Chama a função para buscar os médicos ao carregar a página
+
 buscarMedicos();
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const tabelaMedicos = document.querySelector("table"); 
-    const formularioEdit = document.getElementById("formulario-edicao");
-    const botao_fechar = document.getElementById("fechar-formulario-edicao");
-    if (tabelaMedicos) {
-        tabelaMedicos.addEventListener("click", (event) => {
-            // Verifica se o botão de edição foi clicado
-            if (event.target.closest(".botao_editar")) {
-                const botao = event.target.closest(".botao_editar");
-                formularioEdit.style.display = "flex";
-                const idMedico = botao.closest("tr").querySelector(".id").innerText;
-                console.log("Editar médico com ID:", idMedico);
-                botao_fechar.addEventListener('click', function(){
-                formularioEdit.style.display = 'none';
-            })
-            }
-        });
-    } else {
-        console.error("Tabela de médicos não encontrada!");
-    }
-});
+
+
+
 
 

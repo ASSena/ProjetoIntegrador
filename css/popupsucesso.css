@@ -1,0 +1,39 @@
+.pop-up-excluir-sucesso{
+    width: 500px;
+    height: 300px;
+    text-align: center;
+    margin-left: 700px;
+    margin-top: -300px;
+    flex-direction: column;
+    background-color: white;
+    z-index: 1;
+    position: relative;
+    border-radius: 10px;
+}
+
+.prisucesso{
+    font-size: 25px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight:600;
+}
+
+.segsucesso{
+    margin-top: 15px;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.ok{
+    margin-top: 15px;
+    background-color: #48742C;
+    border: none;
+    width: 80px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.textok{
+    color: white;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+}

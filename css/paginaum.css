@@ -13,6 +13,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: -50px;
 }
 
 .cadastrar_inicio {
@@ -79,7 +80,7 @@ table {
     background-color: #47654F;
     border-radius: 5px;
     overflow: hidden; 
-    box-shadow: black;
+    box-shadow: 3px 5px 15px 3px #888; ;
     
 }
 

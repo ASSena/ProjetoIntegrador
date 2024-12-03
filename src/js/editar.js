@@ -1,121 +1,126 @@
-const area_edicao = document.getElementById('area-arquivo-edicao');
-const inputEdit  = document.getElementById('input-arquivo-edicao');
-const botao_editar = document.querySelectorAll(".botao_editar");
+const dropAreaEdit = document.getElementById('area-arquivo-edicao');
+let upImgEdicao = "";
 
-// Para armazenar a URL da imagem
-let urlUp = "";
+async function buscarmedicoId(id) {
+    try {
+        const response = await fetch(`http://localhost:8080/${id}`); // Requisição para a API
+        if (response.ok) {
+            const medico = await response.json(); // Converte a resposta em JSON
+            return medico;
+        } else {
+            console.error("Erro na requisição:", response.status);
+        }
+    } catch (error) {
+        console.error("Erro de conexão:", error);
+    }
+}
 
-// Arrastar e soltar funcionalidade
-area_edicao.addEventListener('dragover', (event) => {
-    event.preventDefault();
-    area_edicao.classList.add('highlight');
+document.addEventListener("DOMContentLoaded", () => {
+    const tabelaMedicos = document.querySelector("table"); 
+    const formularioEdit = document.getElementById("formulario-edicao");
+    const botao_fechar = document.getElementById("fechar-formulario-edicao");
+
+    if (tabelaMedicos) {
+        tabelaMedicos.addEventListener("click", async (event) => {  // Função assíncrona
+            // Verifica se o botão de edição foi clicado
+            if (event.target.closest(".botao_editar")) {
+                const botao = event.target.closest(".botao_editar");
+                formularioEdit.style.display = "flex";
+                const idmedico = botao.closest("tr").querySelector(".id").innerText;
+                
+                // Espera a resposta de buscarmedicoId antes de preencher os campos
+                const medico = await buscarmedicoId(idmedico); 
+                if (medico) { // Verifica se os dados foram encontrados
+                    document.getElementById('input-nome-edicao').value = medico.nome;
+                    document.getElementById('input-telefone-edicao').value = medico.telefone;
+                    
+                    // Preencher o campo select com o valor correto
+                    const especialidadeSelect = document.getElementById('input-especialidade-edicao');
+                    especialidadeSelect.value = medico.especialidade; // Isso seleciona a opção correta
+                    
+                    document.getElementById('input-crm-edicao').value = medico.crm;
+                   
+                }
+                
+                // Aqui você pode chamar a função para enviar os dados se necessário
+                enviarDadosEditar(idmedico);
+       
+
+                botao_fechar.addEventListener('click', function() {
+                    formularioEdit.style.display = 'none';
+                });
+            }
+        });
+    } else {
+        console.error("Tabela de médicos não encontrada!");
+    }
 });
 
-area_edicao.addEventListener('dragleave', () => {
-    area_edicao.classList.remove('highlight');
-});
 
-area_edicao.addEventListener('drop', async (event) => {
+
+
+
+
+
+dropAreaEdit.addEventListener('drop', async (event) => {
     event.preventDefault();
-    area_edicao.classList.remove('highlight');
+    dropArea.classList.remove('highlight');
     const files = event.dataTransfer.files;
     if (files.length > 0) {
         const file = files[0];
         if (file && file.type.startsWith('image/')) {
-            urlUp = await uploadToCloudinary(file);
-            console.log(urlUp);  // Log da URL da imagem após o upload
-        } else {
-            alert("Por favor, selecione uma imagem.");
+            upImgEdicao = await uploadToCloudinary(file);
+            console.log(upImgEdicao);  // Log da URL da imagem após o upload
+       
         }
     }
 });
 
-// Função para fazer upload da imagem para o Cloudinary
-async function uploadToCloudinary(file) {
-    const cloudinaryUrl = "https://api.cloudinary.com/v1_1/dqyptlmsm/image/upload";
-    const uploadPreset = "fotosusers";
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", uploadPreset);
-    try {
-        const response = await fetch(cloudinaryUrl, {
-            method: "POST",
-            body: formData,
-        });
-        if (!response.ok) {
-            throw new Error("Erro ao enviar a imagem.");
-        }
-        const data = await response.json();
-        console.log("Imagem enviada com sucesso:", data.secure_url);
-        return data.secure_url; // Retorna a URL da imagem
-    } catch (error) {
-        console.error("Erro no upload:", error);
-        return null;
-    }
-}
 
-// Editar médico
-botao_editar.forEach(botao => {
-    botao.addEventListener("click", (e) => {
-        const medicoId = e.target.closest("button").getAttribute("data-id"); // Pega o id do médico
-        abrirFormularioEdicao(medicoId);
-    });
-});
-
-// Função para abrir o formulário de edição e preencher com os dados do médico
-async function abrirFormularioEdicao(medicoId) {
-    // Aqui você deve pegar os dados do médico pelo ID e preencher o formulário
-    // Vamos usar uma requisição para isso:
-    const response = await fetch(`http://localhost:8080/${medicoId}`);
-    const medico = await response.json();
-    console.log(medico)
-
-    // Preenchendo os campos com os dados do médico
-    document.getElementById('input-nome-edicao').value = medico.nome;
-    document.getElementById('input-telefone-edicao').value = medico.telefone;
-    document.getElementById('input-especialidade-edicao').value = medico.especialidade;
-    document.getElementById('input-crm-edicao').value = medico.crm;
-
-    // Se já tiver uma foto, você pode exibi-la aqui (opcional)
-    // document.querySelector(".imagemMedicoFormularioEdicao").src = medico.url_foto || "src/icons/usersemimg.webp";
-
-    // Atualizar a URL da imagem ao enviar o formulário
+async function enviarDadosEditar(id) {
     document.getElementById('form-editar-medico').addEventListener('submit', async (event) => {
         event.preventDefault();
 
         // Coleta os dados do formulário
         const nome = document.getElementById('input-nome-edicao').value;
         const telefone = document.getElementById('input-telefone-edicao').value;
-        const especialidade = document.getElementById('input-especialidade-edicao').value;
+        const especialidade = document.getElementById('input-especialidade-edicao').value.toUpperCase();;
         const crm = document.getElementById('input-crm-edicao').value;
+  
 
-        // Se houver uma nova imagem, usa a URL obtida do upload
-        const medico = {
+
+        // Criação do objeto médico com a URL da imagem
+        const medico_edicao = {
             nome,
             telefone,
             especialidade,
             crm,
-            url_foto: uploadedImageUrl || medico.url_foto, // Se não tiver nova imagem, mantém a original
+            url_foto: upImgEdicao, // Adiciona a URL da imagem ao objeto
         };
-        // Enviar a atualização para a API
+
+        // Envia os dados para o servidor
         try {
-            const updateResponse = await fetch(`http://localhost:8080/${medicoId}`, {
+            const response = await fetch(`http://localhost:8080/editarmedico/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(medico),
+                body: JSON.stringify(medico_edicao), // Envia os dados em JSON
             });
 
-            if (updateResponse.ok) {
-                alert("Médico editado com sucesso!");
-                buscarMedicos(); // Recarrega os médicos após a edição
+            if (response.ok) {
+                location.reload();  // Recarrega a página após sucesso
             } else {
-                console.error("Erro ao editar médico:", updateResponse.status);
+                console.log(medico_edicao)
+                console.log("ESSE É O ID DO MÉDICO:" + id)
+             
             }
         } catch (error) {
-            console.error("Erro de conexão:", error);
+            console.error("Erro ao enviar os dados:", error);
         }
     });
-}
+
+    }
+
+
 

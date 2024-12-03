@@ -138,6 +138,15 @@ form button:hover {
     margin: 10px;
 }
 
+#especialidade{
+    border-radius: 5px;
+    color: gray; 
+    font-size: 14px;
+    
+}
+
+
+
 
 @media(max-width: 1920px){
     .pop-up-content {
@@ -168,8 +177,7 @@ form button:hover {
         font-size: 30px;   
     }
 
-
-
+ 
 
 
 }

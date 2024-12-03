@@ -1,5 +1,5 @@
 const dropArea = document.getElementById('drop-area');
-const fileElem = document.getElementById('fileElem');
+
 // Para armazenar a URL da imagem
 let uploadedImageUrl = "";
 
@@ -22,9 +22,7 @@ dropArea.addEventListener('drop', async (event) => {
         if (file && file.type.startsWith('image/')) {
             uploadedImageUrl = await uploadToCloudinary(file);
             console.log(uploadedImageUrl);  // Log da URL da imagem após o upload
-        } else {
-            alert("Por favor, selecione uma imagem.");
-        }
+        } 
     }
 });
 
@@ -57,12 +55,14 @@ document.getElementById('cadastroForm').addEventListener('submit', async (event)
     event.preventDefault();
 
 
+
     // Coleta os dados do formulário
     const nome = document.getElementById('nome').value;
     const telefone = document.getElementById('telefone').value;
-    const especialidade = document.getElementById('especialidade').value;
+    const especialidade = document.getElementById('especialidade').value.toUpperCase();
     const crm = document.getElementById('crm').value;
-    console.log(nome);
+    
+    
 
     // Criação do objeto médico com a URL da imagem
     const medico = {
@@ -82,12 +82,10 @@ document.getElementById('cadastroForm').addEventListener('submit', async (event)
             },
             body: JSON.stringify(medico), // Envia os dados em JSON
         });
+        
 
         if (response.ok) {
             location.reload();  // Recarrega a página após sucesso
-            alert("Médico cadastrado com sucesso!");
-        } else {
-            alert("Erro ao cadastrar médico.");
         }
     } catch (error) {
         console.error("Erro ao enviar os dados:", error);

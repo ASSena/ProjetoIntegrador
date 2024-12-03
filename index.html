@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Manager Doctor</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +64,14 @@
                     <input type="text" id="telefone" placeholder="Digite o telefone" required>
 
                     <label for="especialidade" class="especialidade_form">Especialidade:</label>
-                    <input type="text" id="especialidade" placeholder="Digite a especialidade" required>
+                     <select name="selecao_especialidade" id="especialidade" required>
+                        <option value="" disabled selected>Selecione a especialidade</option>
+                        <option value="dermatologia">DERMATOLOGIA</option>
+                        <option value="psiquiatria">PSIQUIATRIA</option>
+                        <option value="cardiologia">CARDIOLOGIA</option>
+                        <option value="neurologia">NEUROLOGIA</option>
+                        <option value="pediatria">PEDIATRIA</option>
+                    </select>
 
                     <label for="crm" class="crm_form">CRM:</label>
                     <input type="text" id="crm" placeholder="Digite o CRM" required>
@@ -85,7 +92,7 @@
     </div>
     </div>
 
-
+ 
 
     <div id="formulario-edicao" class="pop-up" style="display:none;">
         <div class="popup-edicao">
@@ -103,7 +110,13 @@
                     <input type="text" id="input-telefone-edicao" placeholder="Digite o telefone">
 
                     <label for="especialidade-edicao" class="label-especialidade-edicao">Especialidade:</label>
-                    <input type="text" id="input-especialidade-edicao" placeholder="Digite a especialidade">
+                    <select name="selecao_especialidade" id="input-especialidade-edicao" required>
+                        <option value="DERMATOLOGIA">DERMATOLOGIA</option>
+                        <option value="PSIQUIATRIA">PSIQUIATRIA</option>
+                        <option value="CARDIOLOGIA">CARDIOLOGIA</option>
+                        <option value="NEUROLOGIA">NEUROLOGIA</option>
+                        <option value="PEDIATRIA">PEDIATRIA</option>
+                    </select>
 
                     <label for="crm-edicao" class="label-crm-edicao">CRM:</label>
                     <input type="text" id="input-crm-edicao" placeholder="Digite o CRM">
@@ -120,6 +133,43 @@
                 </form>
             </div>
         </div>
+    </div>
+
+
+    <div class="pop-up-exlcuir" style="display: none;">
+        <div class="imgalerta">
+            <img src="src/icons/Box Important.png" alt="Aviso de esclusão" class="aviso">
+        </div>
+        
+        <div class="primensagem">
+            <p class="pergunta">Você deseja excluir?</p>
+        </div>
+           
+        <div class="segmensagem">
+            <p class="confirmacao">Após excluir este campo, você <br> não poderá reverter</p>
+        </div>
+        
+        <div class="botoes">
+            <button class="confirmar"><p class="texto_excluir">excluir</p></button>
+            <button class="cancelar"><p class="texto_cancelar">cancelar</p></button>
+        </div>
+       
+    </div>  
+
+    <div class="pop-up-excluir-sucesso" style="display: none;">
+        <div class="imgsucessi">
+            <img src="src/icons/Check Mark.png" alt="Esclusão concluida" class="sucess">
+        </div>
+        <div class="prisucesso">
+            <p class="pergunta">Concluído</p>
+        </div>
+        <div class="segsucesso">
+            <p class="confirmacao">Eclusão concluída com sucesso</p>
+        </div>
+        <div class="botk">
+            <button class="ok"><p class="textok">ok</p></button>
+        </div>
+        
     </div>
 
 
@@ -156,6 +206,7 @@
     <script src="src/js/requisicao.js"></script>
     <script src="src/js/editar.js"></script>
     <script src="src/js/envio.js"></script>
+    <script src="src/js/popup_exlcuir.js"></script>
 </body>
 
 </html>
