@@ -100,7 +100,7 @@ async function enviarDadosEditar(id) {
 
         // Envia os dados para o servidor
         try {
-            const response = await fetch(`https://managerdoctor-bne9e9awe2h3gzgy.brazilsouth-01.azurewebsites.net/${id}`, {
+            const response = await fetch(`https://managerdoctor-bne9e9awe2h3gzgy.brazilsouth-01.azurewebsites.net/editarmedico{id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
