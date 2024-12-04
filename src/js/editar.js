@@ -76,6 +76,29 @@ dropAreaEdit.addEventListener('drop', async (event) => {
     }
 });
 
+async function uploadToCloudinary(file) {
+    const cloudinaryUrl =  "https://api.cloudinary.com/v1_1/dqyptlmsm/image/upload";
+    const uploadPreset = "fotosusers";
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", uploadPreset);
+    try {
+        const response = await fetch(cloudinaryUrl, {
+            method: "POST",
+            body: formData,
+        });
+        if (!response.ok) {
+            throw new Error("Erro ao enviar a imagem.");
+        }
+        const data = await response.json();
+        console.log("Imagem enviada com sucesso:", data.secure_url);
+        return data.secure_url; // Retorna a URL da imagem
+    } catch (error) {
+        console.error("Erro no upload:", error);
+        return null;
+    }
+}
+
 
 async function enviarDadosEditar(id) {
     document.getElementById('form-editar-medico').addEventListener('submit', async (event) => {
