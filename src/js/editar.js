@@ -109,10 +109,11 @@ async function enviarDadosEditar(id) {
         // Criação do objeto médico com a URL da imagem
         const medico_edicao = {
             nome,
-            telefone,
-            especialidade,
+            url_foto: uploadedImageUrl,
             crm,
-            url_foto: upImgEdicao, // Adiciona a URL da imagem ao objeto
+            especialidade,
+            telefone,           
+             
         };
 
         // Envia os dados para o servidor
