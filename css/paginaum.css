@@ -150,8 +150,15 @@ td img {
 .exluir_editar {
     display: flex;
     justify-content: center;
+    gap: 5px;
 }
 
+
+@media(max-width: 1920px){
+    .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
+        font-size: 60px;
+    }   
+}
 
 
 @media (max-width: 1024px) {
