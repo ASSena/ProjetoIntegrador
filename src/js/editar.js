@@ -42,10 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                    
                 }
                 
-                // Aqui você pode chamar a função para enviar os dados se necessário
                 enviarDadosEditar(idmedico);
-       
-
                 botao_fechar.addEventListener('click', function() {
                     formularioEdit.style.display = 'none';
                 });
@@ -57,13 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
-
-if (dropAreaEdit) {
-    dropAreaEdit.addEventListener('dragover', (event) => {
-        event.preventDefault();
-        dropAreaEdit.classList.add('highlight');
-    });
 
 
 dropAreaEdit.addEventListener('drop', async (event) => {
@@ -81,28 +71,6 @@ dropAreaEdit.addEventListener('drop', async (event) => {
     }
 });
 
-async function uploadToCloudinary(file) {
-    const cloudinaryUrl =  "https://api.cloudinary.com/v1_1/dqyptlmsm/image/upload";
-    const uploadPreset = "fotosusers";
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", uploadPreset);
-    try {
-        const response = await fetch(cloudinaryUrl, {
-            method: "POST",
-            body: formData,
-        });
-        if (!response.ok) {
-            throw new Error("Erro ao enviar a imagem.");
-        }
-        const data = await response.json();
-        console.log("Imagem enviada com sucesso:", data.secure_url);
-        return data.secure_url; // Retorna a URL da imagem
-    } catch (error) {
-        console.error("Erro no upload:", error);
-        return null;
-    }
-}
 
 
 async function enviarDadosEditar(id) {
