@@ -43,12 +43,8 @@ body {
 
 
 
-
-
-
 .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
     font-family: "Jomhuria", serif;
-    font-size: 60px;
     color: #fff;
     text-transform: capitalize;
 }
@@ -84,14 +80,14 @@ table {
     
 }
 
-/* Cabeçalho da Tabela */
+
 thead {
     background-color: #35533D;
 }
 
 thead th {
     font-family: "Jomhuria", serif;
-    font-size: 70px;
+    font-size: 60px;
     color: #fff;
     text-transform: uppercase;
     padding: 10px  20px;
@@ -99,7 +95,7 @@ thead th {
     
 }
 
-/* Corpo da Tabela */
+
 tbody tr {
     display: table-row;
     text-align: center;
@@ -112,7 +108,7 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr:hover {
-    background-color: #2F3D33; /* Efeito hover */
+    background-color: #2F3D33; 
 }
 
 
@@ -126,13 +122,13 @@ td, th {
     
 }
 
-/* Imagem na Tabela */
+
 td img {
     max-height: 100px;
     border-radius: 5px;
 }
 
-/* Botões na Tabela */
+
 .botao_lixo, .botao_editar {
     background-color: #25472E;
     height: 70px;
@@ -156,7 +152,8 @@ td img {
     justify-content: center;
 }
 
-/* Responsividade */
+
+
 @media (max-width: 1024px) {
     thead th {
         font-size: 40px;
@@ -171,11 +168,27 @@ td img {
         width: 40px;
         height: 40px;
     }
+    .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
+        font-size: 50px;
+    }
+
+    .nome_site{
+        font-size: 130px;
+    }
+
+    .cadastrar_inicio {
+        font-size: 40px;
+    }
+    
+    .botao_cadastro {
+        height: 60px;
+        width: 130px;
+     
+    }
+
 }
 
-
-@media (max-width:1280px){
-
+@media (max-width: 1280px){
     table {
         width: 90%;
     }
@@ -183,7 +196,7 @@ td img {
         font-size: 50px;
     }
     td, th {
-        font-size: 10px;
+        font-size: 20px; /* Ajuste aqui */
     }
     .botao_lixo, .botao_editar{
         width: 60px;
@@ -194,8 +207,13 @@ td img {
         display: flex;
         gap: 5px;
     }
-
+    .id, .nome_medico, .crm_medico, .telefone_medico, .especialidade_medico {
+        font-size: 50px;
+    }
 }
+
+
+
 
 
 

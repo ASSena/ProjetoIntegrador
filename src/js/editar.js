@@ -54,29 +54,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    // Evento dragover para permitir o drop
+    dropAreaEdit.addEventListener('dragover', (event) => {
+        event.preventDefault(); // Impede comportamento padrão
+        dropAreaEdit.classList.add('highlight'); // Destaca a área de drop
+    });
 
-dropAreaEdit.addEventListener('dragleave', () => {
-    dropAreaEdit.classList.remove('highlight');
+    dropAreaEdit.addEventListener('dragleave', () => {
+        dropAreaEdit.classList.remove('highlight');
+    });
+
+    dropAreaEdit.addEventListener('drop', async (event) => {
+        event.preventDefault();
+        dropAreaEdit.classList.remove('highlight');
+        const files = event.dataTransfer.files;
+        if (files.length > 0) {
+            const file = files[0];
+            if (file && file.type.startsWith('image/')) {
+                uploadedImageUrl = await uploadCloudinaryEdit(file);
+                console.log(uploadedImageUrl);  // Exibe a URL da imagem após o upload
+            }
+        }
+    });
 });
 
-dropAreaEdit.addEventListener('drop', async (event) => {
-    event.preventDefault();
-    dropAreaEdit.classList.remove('highlight');
-    const files = event.dataTransfer.files;
-    if (files.length > 0) {
-        const file = files[0];
-        if (file && file.type.startsWith('image/')) {
-            uploadedImageUrl = await uploadCloudinaryEdit(file);
-            console.log(uploadedImageUrl);  // Log da URL da imagem após o upload
-        } 
-    }
-});
 async function uploadCloudinaryEdit(file) {
-    const cloudinaryUrl =  "https://api.cloudinary.com/v1_1/dqyptlmsm/image/upload";
+    const cloudinaryUrl = "https://api.cloudinary.com/v1_1/dqyptlmsm/image/upload";
     const uploadPreset = "fotosusers";
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", uploadPreset);
+    
     try {
         const response = await fetch(cloudinaryUrl, {
             method: "POST",
@@ -86,7 +95,6 @@ async function uploadCloudinaryEdit(file) {
             throw new Error("Erro ao enviar a imagem.");
         }
         const data = await response.json();
-        console.log("Imagem enviada com sucesso:", data.secure_url);
         return data.secure_url; // Retorna a URL da imagem
     } catch (error) {
         console.error("Erro no upload:", error);
