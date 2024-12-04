@@ -59,12 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+if (dropAreaEdit) {
+    dropAreaEdit.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropAreaEdit.classList.add('highlight');
+    });
 
 
 dropAreaEdit.addEventListener('drop', async (event) => {
+    console.log("Evento drop acionado!");
     event.preventDefault();
-    dropArea.classList.remove('highlight');
+    dropAreaEdit.classList.remove('highlight');
     const files = event.dataTransfer.files;
     if (files.length > 0) {
         const file = files[0];
