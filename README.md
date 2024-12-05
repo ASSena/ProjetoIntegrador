@@ -1,7 +1,7 @@
 <h1>Este é um repositório que fica armazenado o front-end do projeto integrador que desenvolvemos no senai.</h1>
 
-<h3>Nosso projeto tem como premissa a criação de uma aplicação web voltada para o gerenciamento de médicos. Com uma interface intuitiva e agradável o usuário será</h3>
-<h3>capaz de vizualizar, cadastrar, editar e exlcuir médicos de forma fácil.</h3>
+<h3>Nosso projeto tem como premissa a criação de uma aplicação web voltada para o gerenciamento de médicos. Com uma interface intuitiva e agradável o usuário será <br> capaz de vizualizar, cadastrar, editar e exlcuir médicos de forma fácil.</h3>
+
 
 ![image](https://github.com/user-attachments/assets/4604daa6-1100-44e5-aa46-f3d78705b8d8)
 
